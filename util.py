@@ -63,3 +63,4 @@ if __name__ == '__main__':
     extGCD(11, 13)
     extGCD(5, 7)
     print(mappingX(5,7,4,3))
+    print(mappingX(11,13,9,11))
