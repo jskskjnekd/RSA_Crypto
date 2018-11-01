@@ -1,5 +1,4 @@
-
-
+import os
 
 """
 :: 11/1/18   1:14 PM
@@ -11,6 +10,8 @@
     @output
         X, Y
 """
+
+
 def extGCD(a, b):
     prev_x = 1
     x = 0
@@ -43,18 +44,81 @@ def extGCD(a, b):
     @output
         x = [(x_p * One_p + x_q * One_q ) % N ]
 """
+
+
 def mappingX(p, q, x_p, x_q):
     X, Y = extGCD(p, q)
-    N = p*q
-    One_p = (Y*q) % N
-    One_q = (X*p) % N
-    return (x_p * One_p + x_q * One_q ) % N
+    N = p * q
+    One_p = (Y * q) % N
+    One_q = (X * p) % N
+    return (x_p * One_p + x_q * One_q) % N
+
+
+"""
+:: 11/1/18   4:01 PM
+:: quickExpMod
+    @input
+        base:   message int
+        power:  value of power
+        N:
+    @output
+        m^(power) mod N
+"""
+
+#TODO: Not finished
+def quickExpMod():
+    # print(base)
+    # print(power)
+    # print(N)
+    # print("bin ", (bin(power)))
+    # print("bin ", (bin(power)[2:]))
+    #----
+    base = 1234577777777777
+    power = 111111111111111
+    N = 6293462
+    print("bin ", (bin(power)))
+    #----
+    result = base
+    print(result)
+    print("bin=> ", (bin(power)[3:]))
+    for i in bin(power)[3:]:
+        result = (result*result) % N
+        # print("...", i)
+        if int(i) == 1:
+            # print("   ...", i)
+            result = (result * base) % N
+    print("result : ", result)   # TODO:fix it!!!!!!!!!!
 
 
 
 
 
+"""
+:: 11/1/18   4:39 PM
+:: determine if the number is prime or not
+    @input:
+        val
+    @output:
+        bool
+"""
+def isPrime(val):
+    pass
 
+
+
+
+
+"""
+:: 11/1/18   4:16 PM
+:: Byte array to integer
+"""
+
+
+def byteToint(byteArray):
+    result = 0
+    for i in byteArray:
+        result = result * 256 + int(i)
+    return result
 
 
 if __name__ == '__main__':
@@ -62,32 +126,17 @@ if __name__ == '__main__':
     extGCD(42823, 6409)
     extGCD(11, 13)
     extGCD(5, 7)
-    print(mappingX(5,7,4,3))
-    print(mappingX(11,13,9,11))
+    print(mappingX(5, 7, 4, 3))
+    print(mappingX(11, 13, 9, 11))
     # print((bin(123)))
-    print((bin(2**50-976)))
+    print((bin(2 ** 50 - 976)))
+    print("-" * 20)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    base = byteToint(os.urandom(int(256/8)))
+    print("base ", base)
+    power = byteToint(os.urandom(int(512/8)))
+    print("power ", power)
+    N = 2535301200456458802993406410833
+    # quickExpMod(base, power, N)
+    quickExpMod()
 
