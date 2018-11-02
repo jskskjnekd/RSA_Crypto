@@ -66,28 +66,15 @@ def mappingX(p, q, x_p, x_q):
 """
 
 #TODO: Not finished
-def quickExpMod():
-    # print(base)
-    # print(power)
-    # print(N)
-    # print("bin ", (bin(power)))
-    # print("bin ", (bin(power)[2:]))
-    #----
-    base = 1234577777777777
-    power = 111111111111111
-    N = 6293462
-    print("bin ", (bin(power)))
-    #----
+def quickExpMod(base, power, N):
     result = base
-    print(result)
-    print("bin=> ", (bin(power)[3:]))
     for i in bin(power)[3:]:
         result = (result*result) % N
         # print("...", i)
         if int(i) == 1:
             # print("   ...", i)
             result = (result * base) % N
-    print("result : ", result)   # TODO:fix it!!!!!!!!!!
+    print("result :\t", result)
 
 
 
@@ -137,6 +124,6 @@ if __name__ == '__main__':
     power = byteToint(os.urandom(int(512/8)))
     print("power ", power)
     N = 2535301200456458802993406410833
-    # quickExpMod(base, power, N)
-    quickExpMod()
+    quickExpMod(base, power, N)
+    # quickExpMod()
 
