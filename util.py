@@ -65,19 +65,14 @@ def mappingX(p, q, x_p, x_q):
         m^(power) mod N
 """
 
-#TODO: Not finished
+
 def quickExpMod(base, power, N):
     result = base
     for i in bin(power)[3:]:
-        result = (result*result) % N
-        # print("...", i)
+        result = (result * result) % N
         if int(i) == 1:
-            # print("   ...", i)
             result = (result * base) % N
-    print("result :\t", result)
-
-
-
+    return result
 
 
 """
@@ -88,11 +83,41 @@ def quickExpMod(base, power, N):
     @output:
         bool
 """
+
+
 def isPrime(val):
-    pass
+    securityNum = 30  # security level, if pass, the error rate is less than 2**(-s)
+    lenValByte = int(val.bit_length() / 8)
+    i = 0
+    while (i < securityNum):
+        randomChallenge = byteToint(os.urandom(lenValByte))
+        if (randomChallenge > 1) and (randomChallenge < val - 2):
+            i += 1
+            if quickExpMod(randomChallenge, val - 1, val) != 1:
+                return False
+    return True
 
 
+"""
+:: 11/1/18   4:39 PM
+:: Generate a prime number at bits N
+    @input:
+        N     :    number of bits (512/1024/2048......)
+    @output:
+        primeVal  
+"""
 
+
+def generatePrime(numBits):
+    i = 0  # i is the tracker of simulation times. To find a prime, the expected simulation time is 177*2
+    while (i < 1000):
+        primeVal = byteToint(os.urandom(int(numBits / 8)))
+        if primeVal % 2 == 1:
+            if isPrime(primeVal):
+                print("find prime number:\n\t", primeVal)
+                print("\tHex:\t", hex(primeVal))
+                return primeVal
+    print("Failed the search of prime number")
 
 
 """
@@ -119,11 +144,12 @@ if __name__ == '__main__':
     print((bin(2 ** 50 - 976)))
     print("-" * 20)
 
-    base = byteToint(os.urandom(int(256/8)))
+    base = byteToint(os.urandom(int(256 / 8)))
     print("base ", base)
-    power = byteToint(os.urandom(int(512/8)))
+    power = byteToint(os.urandom(int(512 / 8)))
     print("power ", power)
     N = 2535301200456458802993406410833
     quickExpMod(base, power, N)
     # quickExpMod()
-
+    isPrime(2098893665744058648615126425661022259386391)
+    generatePrime(512)
