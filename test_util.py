@@ -49,3 +49,12 @@ class TestUtil(TestCase):
         for i in range(len(input)):
             self.assertEqual(expected[i], isPrime(input[i]))
 
+    def test_GCD(self):
+        input = [
+            [4, 87, 1],
+            [42, 88, 2],
+            [344, 88888,8],
+            [27,29629356, 3]
+        ]
+        for i in input:
+            self.assertEqual(i[2], GCD(i[0], i[1]))

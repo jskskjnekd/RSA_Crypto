@@ -1,6 +1,23 @@
 import os
 
 """
+:: 11/12/18   12:26 PM
+:: GCD
+    @input 
+        x, y
+    @output
+        highest common factor
+"""
+
+
+def GCD(x, y):
+    while (y):
+        x, y = y, x % y
+    return x
+
+
+
+"""
 :: 11/1/18   1:14 PM
 :: extended GCD
     A general method for solving
