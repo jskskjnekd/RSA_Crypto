@@ -1,31 +1,6 @@
 import click
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import util
+import RSA
 
 
 @click.command()
@@ -39,17 +14,26 @@ def main(k, i, o):
     print("Input File:\t", i)
     print("Output File:\t", o)
 
+    # -------------------------Read public key--------------------------------------
+    with open(k, 'r') as keyFile:
+        keyStringNumBits = keyFile.readline()
+        N = int(keyFile.readline())
+        e = int(keyFile.readline())
 
+    # ------------------------Read message file---------------------------------------
+    with open(i, 'rb') as inputFile:
+        messageByte = inputFile.read()
+    message = util.byteToint(messageByte)
+
+    # ------------------------Encryption---------------------------------------
+    cipherInt = RSA.RSACipher.Encryption(N, e, message)
+    # cipherByte = str(cipherInt).encode('latin-1')
+    cipherByte = cipherInt.to_bytes((cipherInt.bit_length() // 8) + 1, byteorder='big')
+    print("->", cipherInt)
+    print("=>", cipherByte)
+    with open(o, 'wb') as outputFile:
+        outputFile.write(cipherByte)
 
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
