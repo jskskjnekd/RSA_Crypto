@@ -1,5 +1,6 @@
 import click
 import util
+import RSA
 
 
 @click.command()
@@ -12,18 +13,26 @@ def main(k, i, o):
     print("Key File:\t", k)
     print("Input File:\t", i)
     print("Output File:\t", o)
-    N_hex = "d27f0b0056d6b1162ad50b30c9d621efcc387fbad3d71c528d362a6ec455122c025a831735e2c39fe7fb7f79c7d73fe7d039fe7864c8271da5d8e159dfb24e8f0a0e8359ebcc88cb9c84245795a9f89b58b34829943c4842bd44d048f8713d8aa89488b3e9d20d17cee887362153d5c87365c550b805d720cb14008f9d00e339"
-    e_hex = "10001"
-    print(util.hexToInt(N_hex))
-    print(util.hexToInt(N_hex).bit_length())
-    print(util.hexToInt(e_hex))
 
-    #-------------------------Read public key--------------------------------------
-    # with open()
+    # -------------------------Read public key--------------------------------------
+    with open(k, 'r') as keyFile:
+        keyStringNumBits = keyFile.readline()
+        N = int(keyFile.readline())
+        e = int(keyFile.readline())
+
     # ------------------------Read message file---------------------------------------
+    with open(i, 'rb') as inputFile:
+        messageByte = inputFile.read()
+    message = util.byteToint(messageByte)
 
-    # ---------------------------------------------------------------
-
+    # ------------------------Encryption---------------------------------------
+    cipherInt = RSA.RSACipher.Encryption(N, e, message)
+    # cipherByte = str(cipherInt).encode('latin-1')
+    cipherByte = cipherInt.to_bytes((cipherInt.bit_length() // 8) + 1, byteorder='big')
+    print("->", cipherInt)
+    print("=>", cipherByte)
+    with open(o, 'wb') as outputFile:
+        outputFile.write(cipherByte)
 
 
 if __name__ == '__main__':
