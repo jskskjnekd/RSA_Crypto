@@ -4,21 +4,19 @@ from . import *
 from util import *
 import random
 
-def readParameters(n):
-    p = generatePrime(n)
-    q = generatePrime(n)
-    n = p * q
-    phi = (p - 1)*(q - 1)
-    return (p,q,n,phi)
 
-def gen_keypair(self):
-    p = self.p
-    q  = self.q
+def keygen(n):
+    num_bits = int(n)
+    p_prime = generatePrime(num_bits)
+    q_prime = generatePrime(num_bits)
+    N = p_prime * q_prime
+    phi = (p_prime - 1) * (q_prime - 1)
     e = 65537
-    while not GCD(e,self.phi) == 1:
-        e = random.randrange(1,self.phi)
-    d = extGCD(e, self.phi)
-    return ((e,self.n),(d, self.n))
+    while not GCD(e, phi) == 1:
+        e = random.randrange(1, phi)
+    d = extGCD(e, phi)
+    return (e, N), d
+
 
 @click.command()
 @click.option('-p',
@@ -27,5 +25,28 @@ def gen_keypair(self):
               help='specifies the file starting a valid RSA private key as string')
 @click.option('-n',
               help='specifies the expected number of bits in your p and q')
-def main(p,s,n):
-    num_bits = n
+def main(p, s, n):
+    # ------------ Return RSA keypair -------------_#
+    num_bits = int(n)
+    pub_tuple, priv = keygen(num_bits)
+
+    # ------------ Store string representation ----_#
+    numbits_string = n
+    N_string = str(pub_tuple[1])
+    e_string = str(pub_tuple[0])
+    d_string = str(priv)
+
+    # ------------ Output Results -------------_#
+    with open(p, 'w') as publicFile:
+        publicFile.writelines(numbits_string + '\n')
+        publicFile.writelines(N_string + '\n')
+        publicFile.writelines(e_string)
+
+    with open(s, 'w') as privateFile:
+        privateFile.writelines(numbits_string + '\n')
+        privateFile.writelines(N_string + '\n')
+        privateFile.writelines(d_string)
+
+
+if __name__ == '__main__':
+    main()
