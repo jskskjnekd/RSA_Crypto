@@ -35,7 +35,7 @@ def extGCD(a, b):
     prev_y = 0
     y = 1
     while (b != 0):
-        q = int(a / b)
+        q = int(a // b)
         tempX1 = prev_x - q * x
         tempX2 = x
         x = tempX1
