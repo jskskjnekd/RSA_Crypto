@@ -131,6 +131,17 @@ def quickExpMod(base, power, N):
 def isPrime(val):
     securityNum = 30  # security level, if pass, the error rate is less than 2**(-s)
     lenValByte = int(val.bit_length() / 8)
+    #----------------------
+    if (lenValByte == 0):
+        if val == 2:
+            return True
+        else:
+            for i in range(2, val):
+                if (val % i) == 0:
+                    return False
+            return True
+    #---------------------
+    # print(lenValByte, val.bit_length())
     i = 0
     while (i < securityNum):
         randomChallenge = byteToint(os.urandom(lenValByte))
@@ -182,7 +193,7 @@ def byteToint(byteArray):
 """
 
 def hexToInt(hexStr):
-    return byteToint(bytearray.fromhex(hexStr))
+    return int(hexStr, 16)
 
 
 if __name__ == '__main__':

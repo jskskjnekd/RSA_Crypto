@@ -23,6 +23,11 @@ class TestUtil(TestCase):
 
     def test_isprime(self):
         input = [
+            5,
+            2,
+            3,
+            4,
+            59,
             2017,
             2027,
             393050634124102232869567034555427371542904833,
@@ -38,6 +43,11 @@ class TestUtil(TestCase):
             True,
             True,
             True,
+            False,
+            True,
+            True,
+            True,
+            True,
             True,
             False,
             True,
@@ -48,6 +58,7 @@ class TestUtil(TestCase):
         ]
         for i in range(len(input)):
             self.assertEqual(expected[i], isPrime(input[i]))
+        # isPrime(2**6)
 
     def test_GCD(self):
         input = [
