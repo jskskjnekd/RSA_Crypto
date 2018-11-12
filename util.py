@@ -52,6 +52,33 @@ def extGCD(a, b):
 
 
 """
+:: 11/12/18   12:36 PM
+:: inverse modulo
+    @input
+        phi(n), e
+    @output
+        t : the inverse of e
+            GCD(phi(n), e) = s*phi(n) + t*e
+"""
+
+def inverse_mod(phi_n, e):
+    s, t = extGCD(phi_n, e)
+    return t
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
 :: 11/1/18   1:33 PM
 :: Mapping from (x_p, x_q) to x in Zn*
     @input
