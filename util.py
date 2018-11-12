@@ -16,7 +16,6 @@ def GCD(x, y):
     return x
 
 
-
 """
 :: 11/1/18   1:14 PM
 :: extended GCD
@@ -61,21 +60,10 @@ def extGCD(a, b):
             GCD(phi(n), e) = s*phi(n) + t*e
 """
 
+
 def inverse_mod(phi_n, e):
     s, t = extGCD(phi_n, e)
     return t
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 """
@@ -131,7 +119,7 @@ def quickExpMod(base, power, N):
 def isPrime(val):
     securityNum = 30  # security level, if pass, the error rate is less than 2**(-s)
     lenValByte = int(val.bit_length() / 8)
-    #----------------------
+    # ----------------------
     if (lenValByte == 0):
         if val == 2:
             return True
@@ -140,7 +128,7 @@ def isPrime(val):
                 if (val % i) == 0:
                     return False
             return True
-    #---------------------
+    # ---------------------
     # print(lenValByte, val.bit_length())
     i = 0
     while (i < securityNum):
@@ -191,6 +179,7 @@ def byteToint(byteArray):
 :: 11/12/18   2:35 PM
 :: Hex to integer
 """
+
 
 def hexToInt(hexStr):
     return int(hexStr, 16)
