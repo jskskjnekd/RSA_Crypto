@@ -18,6 +18,13 @@ def main(k, i, o):
     print(util.hexToInt(N_hex).bit_length())
     print(util.hexToInt(e_hex))
 
+    #-------------------------Read public key--------------------------------------
+    # with open()
+    # ------------------------Read message file---------------------------------------
+
+    # ---------------------------------------------------------------
+
+
 
 if __name__ == '__main__':
     main()
