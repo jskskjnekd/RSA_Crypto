@@ -176,6 +176,15 @@ def byteToint(byteArray):
     return result
 
 
+"""
+:: 11/12/18   2:35 PM
+:: Hex to integer
+"""
+
+def hexToInt(hexStr):
+    return byteToint(bytearray.fromhex(hexStr))
+
+
 if __name__ == '__main__':
     extGCD(8, 11)
     extGCD(42823, 6409)
