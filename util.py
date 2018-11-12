@@ -17,7 +17,7 @@ def GCD(x, y):
 
 
 """
-:: 11/1/18   1:14 PM
+:: 11/1/18    1:14 PM
 :: extended GCD
     A general method for solving
         Xa + Yb = GCD(a,b)
