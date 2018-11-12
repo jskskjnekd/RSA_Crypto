@@ -156,8 +156,8 @@ def generatePrime(numBits):
         primeVal = byteToint(os.urandom(int(numBits / 8)))
         if primeVal % 2 == 1:
             if isPrime(primeVal):
-                print("find prime number:\n\t", primeVal)
-                print("\tHex:\t", hex(primeVal))
+                # print("find prime number:\n\t", primeVal)
+                # print("\tHex:\t", hex(primeVal))
                 return primeVal
     print("Failed the search of prime number")
 
@@ -185,23 +185,23 @@ def hexToInt(hexStr):
     return int(hexStr, 16)
 
 
-if __name__ == '__main__':
-    extGCD(8, 11)
-    extGCD(42823, 6409)
-    extGCD(11, 13)
-    extGCD(5, 7)
-    print(mappingX(5, 7, 4, 3))
-    print(mappingX(11, 13, 9, 11))
-    # print((bin(123)))
-    print((bin(2 ** 50 - 976)))
-    print("-" * 20)
-
-    base = byteToint(os.urandom(int(256 / 8)))
-    print("base ", base)
-    power = byteToint(os.urandom(int(512 / 8)))
-    print("power ", power)
-    N = 2535301200456458802993406410833
-    quickExpMod(base, power, N)
-    # quickExpMod()
-    isPrime(2098893665744058648615126425661022259386391)
-    generatePrime(512)
+# if __name__ == '__main__':
+#     extGCD(8, 11)
+#     extGCD(42823, 6409)
+#     extGCD(11, 13)
+#     extGCD(5, 7)
+#     print(mappingX(5, 7, 4, 3))
+#     print(mappingX(11, 13, 9, 11))
+#     # print((bin(123)))
+#     print((bin(2 ** 50 - 976)))
+#     print("-" * 20)
+#
+#     base = byteToint(os.urandom(int(256 / 8)))
+#     print("base ", base)
+#     power = byteToint(os.urandom(int(512 / 8)))
+#     print("power ", power)
+#     N = 2535301200456458802993406410833
+#     quickExpMod(base, power, N)
+#     # quickExpMod()
+#     isPrime(2098893665744058648615126425661022259386391)
+#     generatePrime(512)
