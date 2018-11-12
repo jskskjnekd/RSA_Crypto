@@ -24,14 +24,3 @@ class rsa_keygen:
 		
 		return ((e,self.n),(d, self.n))
 
-if __name__ == '__main__':
-
-	rsa = rsa_keygen(1024)
-	pub,priv = rsa.gen_keypair()
-	
-	for element in pub:
-		print(element)
-
-	for element in priv:
-		print(element)
-	
