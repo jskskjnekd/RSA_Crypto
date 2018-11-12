@@ -31,7 +31,6 @@ def extGCD(a, b):
         temp_a = b
         a = temp_a
         b = temp_b
-    print(a, prev_x, prev_y)
     return prev_x, prev_y
 
 
