@@ -19,7 +19,7 @@ class RSACipher:
         """
         return util.quickExpMod(m,e,N)
 
-    def Decryption(self, N, d, c):
+    def Decryption(N, d, c):
         """
         :param N:
         :param d: all from private key
@@ -27,7 +27,6 @@ class RSACipher:
         :return:
             c**d mod N
         """
-        # return c**d % N
         return util.quickExpMod(c, d, N)
 
 
