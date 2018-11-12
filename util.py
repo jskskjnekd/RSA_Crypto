@@ -182,7 +182,7 @@ def byteToint(byteArray):
 """
 
 def hexToInt(hexStr):
-    return byteToint(bytearray.fromhex(hexStr))
+    return int(hexStr, 16)
 
 
 if __name__ == '__main__':
