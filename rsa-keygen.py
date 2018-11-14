@@ -16,9 +16,6 @@ def keygen(n):
         phi = (p_prime - 1) * (q_prime - 1)
 
     d = inverse_mod(phi, e)
-    print('+-+- TESTING INVERSE_MOD(phi, 3)')
-    print(str(d))
-    print()
     return (e, N), d
 
 
