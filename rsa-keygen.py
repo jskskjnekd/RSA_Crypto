@@ -6,15 +6,19 @@ import random
 
 
 def keygen(n):
-    num_bits = int(n)
-    p_prime = generatePrime(num_bits)
-    q_prime = generatePrime(num_bits)
-    N = p_prime * q_prime
-    phi = (p_prime - 1) * (q_prime - 1)
-    e = 65537
+    phi = 3
+    e = 3
     while not GCD(e, phi) == 1:
-        e = random.randrange(1, phi)
-    d = extGCD(e, phi)
+        num_bits = int(n)
+        p_prime = generatePrime(num_bits)
+        q_prime = generatePrime(num_bits)
+        N = p_prime * q_prime
+        phi = (p_prime - 1) * (q_prime - 1)
+
+    d = inverse_mod(phi, e)
+    print('+-+- TESTING INVERSE_MOD(phi, 3)')
+    print(str(d))
+    print()
     return (e, N), d
 
 
