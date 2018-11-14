@@ -19,17 +19,23 @@ def main(k, i, o):
         keyStringNumBits = keyFile.readline()
         N = int(keyFile.readline())
         d = int(keyFile.readline())
+    print("Private Key:\n", N, "\n----\n", d)
 
     # ------------------------Read message file---------------------------------------
     with open(i, 'rb') as inputFile:
         cipherByte = inputFile.read()
     cipherInt = util.byteToint(cipherByte)
+    print("\ncipher text is:\n", cipherInt)
 
     # ------------------------Read message file---------------------------------------
     plain = RSA.RSACipher.Decryption(N, d, cipherInt)
-    print(plain)
-    plainByte = plain.to_bytes((plain.bit_length() // 8) + 1, byteorder='big')
-    print(plainByte)
+    print("Plain text bit length is ", plain.bit_length())
+    print("\nPlain text is:\n", plain, "\n\n")
+    if (plain.bit_length() % 8 == 0):
+        plainByte = plain.to_bytes((plain.bit_length() // 8), byteorder='big')
+    else:
+        plainByte = plain.to_bytes((plain.bit_length() // 8)+1, byteorder='big')
+    print("Plain Bytes : \n",plainByte)
     with open(o, 'wb') as outputFile:
         outputFile.write(plainByte)
 
