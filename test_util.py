@@ -75,8 +75,8 @@ class TestUtil(TestCase):
         phi_n = 1122864880
         e = 3
         res =inverse_mod(phi_n, e)
-        print(res)
-        print(res+phi_n)
+        self.assertEqual(748576587, res)
+
 
 
 
