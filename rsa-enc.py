@@ -26,6 +26,7 @@ def main(k, i, o):
         messageByte = inputFile.read()
     message = util.byteToint(messageByte)
     print("Plain text is:\n", message, "\n")
+    print("Plain text byte is:\n", messageByte, "\n")
 
     # ------------------------Encryption---------------------------------------
     cipherInt = RSA.RSACipher.Encryption(N, e, message)
