@@ -8,14 +8,15 @@ import random
 def keygen(n):
     phi = 3
     e = 3
+    num_bits = int(n)
+    p_prime = generatePrime(num_bits)
+    q_prime = generatePrime(num_bits)
+    N = p_prime * q_prime
+    phi = (p_prime - 1) * (q_prime - 1)
     while not GCD(e, phi) == 1:
-        num_bits = int(n)
-        p_prime = generatePrime(num_bits)
-        q_prime = generatePrime(num_bits)
-        N = p_prime * q_prime
-        phi = (p_prime - 1) * (q_prime - 1)
-
+        e = random.randrange(1,phi)
     d = inverse_mod(phi, e)
+
     return (e, N), d
 
 
