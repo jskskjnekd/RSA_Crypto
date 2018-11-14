@@ -69,3 +69,35 @@ class TestUtil(TestCase):
         ]
         for i in input:
             self.assertEqual(i[2], GCD(i[0], i[1]))
+
+
+    def test_inverse_mod(self):
+        phi_n = 1122864880
+        e = 3
+        res =inverse_mod(phi_n, e)
+        print(res)
+        print(res+phi_n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

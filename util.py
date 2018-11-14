@@ -63,7 +63,10 @@ def extGCD(a, b):
 
 def inverse_mod(phi_n, e):
     s, t = extGCD(phi_n, e)
-    return t
+    if t < 0:
+        return phi_n+t
+    else:
+        return t
 
 
 """
