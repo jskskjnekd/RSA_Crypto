@@ -77,6 +77,28 @@ class TestUtil(TestCase):
         res =inverse_mod(phi_n, e)
         self.assertEqual(748576587, res)
 
+    def test_generatePrime(self):
+        print("Prime :\t",generatePrime(1))
+        print("Prime :\t",generatePrime(2))
+        print("Prime :\t",generatePrime(3))
+        print("Prime :\t",generatePrime(4))
+        print("Prime :\t",generatePrime(5))
+        print("Prime :\t",generatePrime(6))
+        print("Prime :\t",generatePrime(7))
+        print("Prime :\t",generatePrime(8))
+        print("Prime :\t",generatePrime(9))
+        print("Prime :\t",generatePrime(10))
+        print("Prime :\t",generatePrime(11))
+        print("Prime :\t",generatePrime(111))
+        print("Prime :\t",generatePrime(1111))
+        print("Prime :\t",generatePrime(22))
+        print("Prime :\t",generatePrime(222))
+        print("Prime :\t",generatePrime(3))
+        print("Prime :\t",generatePrime(33))
+        print("Prime :\t",generatePrime(4))
+        print("Prime :\t",generatePrime(44))
+        print("Prime :\t",generatePrime(444))
+
 
 
 

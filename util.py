@@ -1,4 +1,5 @@
 import os
+import random
 
 """
 :: 11/12/18   12:26 PM
@@ -64,7 +65,7 @@ def extGCD(a, b):
 def inverse_mod(phi_n, e):
     s, t = extGCD(phi_n, e)
     if t < 0:
-        return phi_n+t
+        return phi_n + t
     else:
         return t
 
@@ -155,6 +156,26 @@ def isPrime(val):
 
 def generatePrime(numBits):
     i = 0  # i is the tracker of simulation times. To find a prime, the expected simulation time is 177*2
+    # --- if numBits less than 8
+    if (numBits == 1):
+        return 2
+    elif (numBits == 2):
+        return random.choice([2,3])
+    elif (numBits == 3):
+        return random.choice([2, 3, 7])
+    elif (numBits == 4):
+        return random.choice([2, 3, 7, 5, 7, 11, 13])
+    elif (numBits == 5):
+        return random.choice([2, 3, 7, 5, 7, 11, 13, 17, 19, 23, 29, 31])
+    elif (numBits == 6):
+        return random.choice([2, 3, 7, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61])
+    elif (numBits == 7):
+        return random.choice([2, 3, 7, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127])
+    elif (numBits == 8):
+        return random.choice(
+            [2, 3, 7, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101,
+             103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251])
+    # numBits > 8
     while (i < 1000):
         primeVal = byteToint(os.urandom(int(numBits / 8)))
         if primeVal % 2 == 1:
@@ -186,7 +207,6 @@ def byteToint(byteArray):
 
 def hexToInt(hexStr):
     return int(hexStr, 16)
-
 
 # if __name__ == '__main__':
 #     extGCD(8, 11)
