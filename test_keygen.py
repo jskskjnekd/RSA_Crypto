@@ -5,12 +5,14 @@ from util import *
 class TestKeyGen(TestCase):
     def test_publicKey(self):
         
-        for i in range(3,11):
+        for i in range(3,10):
             security_param = 2**i
             num_bytes = str(security_param//8)
             n = ' '+str(security_param)
-            
-            aes_key = 'head -c '+num_bytes+' </dev/random  >testData/aes_key'
+
+
+            print("....... ", str(int((security_param//8)/2)) )
+            aes_key = 'head -c '+ str(int((security_param//8)/2)) +' </dev/random  >testData/aes_key'
             os.system(aes_key)
 
             aes_file = ' testData/aes_key'

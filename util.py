@@ -208,23 +208,73 @@ def byteToint(byteArray):
 def hexToInt(hexStr):
     return int(hexStr, 16)
 
-# if __name__ == '__main__':
-#     extGCD(8, 11)
-#     extGCD(42823, 6409)
-#     extGCD(11, 13)
-#     extGCD(5, 7)
-#     print(mappingX(5, 7, 4, 3))
-#     print(mappingX(11, 13, 9, 11))
-#     # print((bin(123)))
-#     print((bin(2 ** 50 - 976)))
-#     print("-" * 20)
-#
-#     base = byteToint(os.urandom(int(256 / 8)))
-#     print("base ", base)
-#     power = byteToint(os.urandom(int(512 / 8)))
-#     print("power ", power)
-#     N = 2535301200456458802993406410833
-#     quickExpMod(base, power, N)
-#     # quickExpMod()
-#     isPrime(2098893665744058648615126425661022259386391)
-#     generatePrime(512)
+"""
+:: 11/15/18   11:03 AM
+:: Padding
+    @input
+        len_n : the final length of padded message in bits
+        unpadded_message: uppadded message in bytes
+    @output
+        padded_message
+::
+    (0x00 || 0x02 || r || 0x00 || m)
+    where r is a random bytes array;
+::
+    len(padded_message) = n   (in bits)  
+"""
+
+def padding(len_n, unpadded_message):
+    try:
+        assert (len(unpadded_message) <= int((int(len_n/2) - 24)/8))
+    except Exception as e:
+        print(e)
+        print("The length of unpadded message MUST be no more than int(len_n/2) - 3)")
+
+    m = bytes(int((int(len_n/2) - 3)/8))
+    print(int((int(len_n/2) - 3)/8))
+    print(len(unpadded_message))
+    print(len(m))
+    print(m)
+    print(unpadded_message)
+    m[len(m)-len(unpadded_message):] = unpadded_message
+    print(m)
+    pass
+    # print("unpadded message : ", unpadded_message)
+    # print("unpadded message len : ", len(unpadded_message))
+    # len_r = len(unpadded_message) + 3
+    # r = os.urandom(len_r)
+    # # print(type(r))
+    # # print(type(unpadded_message))
+    # padded_message = b'\x00' + b'\x02' + r + b'\x00' + unpadded_message
+    # print(padded_message)
+    # print(len(padded_message))
+    # print(padded_message[int(len(padded_message)/2)])
+    # print((padded_message[2+int(len(padded_message)/2)]).to_bytes(1, 'big'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

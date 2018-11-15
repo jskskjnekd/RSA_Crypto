@@ -101,7 +101,20 @@ class TestUtil(TestCase):
 
 
 
-
+    def test_padding(self):
+        print(bytes(1))
+        print(bytes(2))
+        print(b'\x00')
+        print(b'\x01')
+        print(b'\x01' + b'\x02')
+        myBits = int("101110", base=2)
+        print("myBits", myBits)
+        print("myBits len", myBits.bit_length())
+        print("myBits len (byte)", (myBits.bit_length()//8)+1)
+        print("myBits to byte", myBits.to_bytes((myBits.bit_length()//8)+1, 'big'))
+        print("-"*10)
+        unpaddedText = os.urandom(256//8)
+        padding(580, unpaddedText)
 
 
 

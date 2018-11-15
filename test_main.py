@@ -14,7 +14,7 @@ class TestMain(TestCase):
 
     def test_main(self):
         count = 0
-        for round in range(1000):
+        for round in range(100):
             os.system("rm testData/testPlain*")
             print ("\n"*5)
             count = 1
