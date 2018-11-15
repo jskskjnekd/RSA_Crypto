@@ -5,14 +5,20 @@ from util import *
 import random
 
 
-def keygen(n):
-    phi = 3
+
+def compute_phi_p_q(n):
     e = 3
     num_bits = int(n)
     p_prime = generatePrime(num_bits)
     q_prime = generatePrime(num_bits)
+    phi = (p_prime - 1)*(q_prime - 1)
+    return phi, p_prime, q_prime
+
+def keygen(n):
+    e = 3
+    phi, p_prime, q_prime = compute_phi_p_q(n)
     N = p_prime * q_prime
-    phi = (p_prime - 1) * (q_prime - 1)
+
     while not GCD(e, phi) == 1:
         e = random.randrange(1,phi)
     d = inverse_mod(phi, e)
