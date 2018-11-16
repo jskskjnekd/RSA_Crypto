@@ -102,21 +102,19 @@ class TestUtil(TestCase):
 
 
     def test_padding(self):
-        print(bytes(1))
-        print(bytes(2))
-        print(b'\x00')
-        print(b'\x01')
-        print(b'\x01' + b'\x02')
-        myBits = int("101110", base=2)
-        print("myBits", myBits)
-        print("myBits len", myBits.bit_length())
-        print("myBits len (byte)", (myBits.bit_length()//8)+1)
-        print("myBits to byte", myBits.to_bytes((myBits.bit_length()//8)+1, 'big'))
-        print("-"*10)
-        unpaddedText = os.urandom(256//8)
-        padding(580, unpaddedText)
+        unpaddedText = os.urandom(256 // 8)
+        padding(560, unpaddedText)
+        padding(561, unpaddedText)
+        padding(568, unpaddedText)
+        padding(569, unpaddedText)
 
-
+    def test_generate_r(self):
+        len_r_inBits_list = [1, 10, 16, 32, 35, 90, 100, 150, 160, 200, 256, 300]
+        for i in len_r_inBits_list:
+            r = generate_r(i)
+            self.assertEqual(math.ceil(i//8), len(r))
+            for j in r:
+                self.assertNotEqual(b"\x00", j)
 
 
 
