@@ -240,7 +240,7 @@ def padding(n, unpadded_message):
     if len(unpadded_message) * 8 > len_m_inBits_limit:
         raise ValueError('message size is too big')
     else:
-        r = generate_r(len_r_inBits)  
+        r = generate_r(len_r_inBits)
         result = b'\x00\x02' + r + b"\x00" + unpadded_message
         return result
 
@@ -255,3 +255,11 @@ def generate_r(len_r_inBits):
             r += randomByte
             r_current_length_inBytes += 1
     return r
+
+
+def unpadding(paddedMessage):
+    for i in range(1, len(paddedMessage)):
+        if paddedMessage[i] == 0:
+            break
+    result = paddedMessage[i + 1:]
+    return result
