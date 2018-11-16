@@ -39,7 +39,7 @@ def main(p, s, n):
     pub_tuple, priv = keygen(num_bits)
 
     # ------------ Store string representation ----_#
-    numbits_string = n
+    numbits_string = str(pub_tuple[1].bit_length())
     N_string = str(pub_tuple[1])
     e_string = str(pub_tuple[0])
     d_string = str(priv)
