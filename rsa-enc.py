@@ -30,21 +30,17 @@ def main(k, i, o):
 
     # ------------------------Padding the message---------------------------------------
     paddedMessageByte = RSA.RSACipher.pad(keyStringNumBits, messageByte)
-    assert (util.byteToint(paddedMessageByte) < N)
-    print(len(paddedMessageByte)*8, keyStringNumBits)
-    print(util.byteToint(paddedMessageByte))
-    print(N.bit_length())
-    t = 3233
-    print(t.bit_length())
+    paddedMessageInt = util.byteToint(paddedMessageByte)
+    assert (paddedMessageInt < N)
+
 
     # ------------------------Encryption---------------------------------------
-    cipherInt = RSA.RSACipher.Encryption(N, e, message)
-    # # cipherByte = str(cipherInt).encode('latin-1')
-    # cipherByte = cipherInt.to_bytes((cipherInt.bit_length() // 8) + 1, byteorder='big')
-    # print("cipherInt ->\n", cipherInt)
-    # print("cipherByte =>\n", cipherByte)
-    # with open(o, 'wb') as outputFile:
-    #     outputFile.write(cipherByte)
+    cipherInt = RSA.RSACipher.Encryption(N, e, paddedMessageInt)
+    cipherByte = cipherInt.to_bytes((cipherInt.bit_length() // 8) + 1, byteorder='big')
+    print("cipherInt ->\n", cipherInt)
+    print("cipherByte =>\n", cipherByte)
+    with open(o, 'wb') as outputFile:
+        outputFile.write(cipherByte)
 
 
 if __name__ == '__main__':
