@@ -6,11 +6,40 @@ import hashlib
 class TestMain(TestCase):
 
     def generateRandomPlainFile(self, numBits, count):
-        randomVal = os.urandom(int(numBits / 8))
+        randomVal = os.urandom(int(numBits // 8))
         fileName = "testData/testPlain_" + str(count)
         with open(fileName, 'wb') as plainFile:
             plainFile.write(randomVal)
         return fileName
+
+
+    def test_RSA_encryption(self):
+        # generate original message
+        numBits = 256
+        id = 1
+        originalTextFile = self.generateRandomPlainFile(numBits, id)
+
+        # generate key file
+        security_param = numBits * 4
+        privateKey_file = 'testData/privKey' + str(id)
+        publicKey_file = 'testData/pubKey' + str(id)
+        keygen_command = 'python3 rsa-keygen.py ' + \
+                            ' -p ' + publicKey_file + \
+                            ' -s ' + privateKey_file + \
+                            ' -n ' + str(security_param)
+        os.system(keygen_command)
+
+        # RSA encryption
+        cipherTextFile = "testData/testPlain_enc_" + str(id)
+        encryption_command = "python3 rsa-enc.py " + \
+                                " -k " + publicKey_file + \
+                                " -i " + originalTextFile + \
+                                " -o " + cipherTextFile
+        os.system(encryption_command)
+
+
+
+
 
     def test_main(self):
         count = 0

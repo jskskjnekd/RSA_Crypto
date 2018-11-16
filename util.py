@@ -233,20 +233,22 @@ def padding(n, unpadded_message):
     print("\n" * 2)
     len_m_inBits_limit = int(n // 2) - 24
     len_r_inBits = n - len(unpadded_message) * 8 - 24
-    print("len r in bits:\t", len_r_inBits)
-    print("len m in bits:\t", len(unpadded_message) * 8)
-    print("total n bits:\t", n, " = ", len_r_inBits, " + 24 + ", 8 * len(unpadded_message))
+    print("len r in bits ", len_r_inBits)
 
     if len(unpadded_message) * 8 > len_m_inBits_limit:
+        print("total n bits:\t", n)
+        print("unpadded message length in bytes:\t", 8*len(unpadded_message))
+        print("unpadded message length limit in bytes:\t", len_m_inBits_limit)
         raise ValueError('message size is too big')
     else:
         r = generate_r(len_r_inBits)
         result = b'\x00\x02' + r + b"\x00" + unpadded_message
+        print("padded message length in bits ", 8*len(result))
         return result
 
 
 def generate_r(len_r_inBits):
-    len_r_inBytes = math.ceil(len_r_inBits // 8)
+    len_r_inBytes = math.floor(len_r_inBits // 8)
     r_current_length_inBytes = 0
     r = b""
     while (r_current_length_inBytes != len_r_inBytes):
