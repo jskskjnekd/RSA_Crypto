@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf4cbf25-de77-4465-b998-1b6bd493cedd" name="Default Changelist" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testData/testPlain_1_enc" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testData/aes_key" afterPath="$PROJECT_DIR$/testData/aes_key" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testData/cipher_output" afterPath="$PROJECT_DIR$/testData/cipher_output" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testData/plain_output" afterPath="$PROJECT_DIR$/testData/plain_output" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testData/testPlain_1" afterPath="$PROJECT_DIR$/testData/testPlain_1" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/RSA_Crypto.iml" afterPath="$PROJECT_DIR$/.idea/RSA_Crypto.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RSA.py" afterPath="$PROJECT_DIR$/RSA.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testData/privKey" afterPath="$PROJECT_DIR$/testData/privKey" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testData/pubKey" afterPath="$PROJECT_DIR$/testData/pubKey" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test_main.py" afterPath="$PROJECT_DIR$/test_main.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -525,7 +515,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="961" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
