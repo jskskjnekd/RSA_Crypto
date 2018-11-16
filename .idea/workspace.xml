@@ -6,13 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bf4cbf25-de77-4465-b998-1b6bd493cedd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RSA.py" beforeDir="false" afterPath="$PROJECT_DIR$/RSA.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rsa-keygen.py" beforeDir="false" afterPath="$PROJECT_DIR$/rsa-keygen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_RSA_encryption.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_RSA_encryption.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_keygen.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_keygen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,27 +50,27 @@
         <counts>
           <entry key="md" value="2" />
           <entry key="py" value="211" />
-          <entry key="txt" value="13" />
+          <entry key="txt" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Markdown" value="2" />
-          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="PLAIN_TEXT" value="16" />
           <entry key="Python" value="211" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="md" value="112" />
+          <entry key="md" value="232" />
           <entry key="py" value="7702" />
-          <entry key="txt" value="533" />
+          <entry key="txt" value="564" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Markdown" value="112" />
-          <entry key="PLAIN_TEXT" value="533" />
+          <entry key="Markdown" value="232" />
+          <entry key="PLAIN_TEXT" value="564" />
           <entry key="Python" value="7702" />
         </counts>
       </usages-collector>
@@ -118,13 +111,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="434">
-                <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-              </first_editor>
-              <second_editor />
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -482,7 +472,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542389975218</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="README add instructions">
+      <created>1542390421790</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1542390421790</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -521,12 +518,12 @@
     <frame x="0" y="28" width="1080" height="1892" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="348" y="680" width="383" height="603" id="Project" order="0" type="WINDOWED" visible="true" weight="0.22044729" />
+      <window_info content_ui="combo" x="348" y="680" width="383" height="603" id="Project" order="0" type="WINDOWED" visible="true" weight="0.22044729" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" x="1080" y="485" width="1920" height="1052" id="Run" order="2" type="WINDOWED" visible="true" weight="0.32982087" />
+      <window_info anchor="bottom" x="1080" y="485" width="1920" height="1052" id="Run" order="2" type="WINDOWED" weight="0.32982087" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39917696" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -572,17 +569,11 @@
     <MESSAGE value="add test for keygen" />
     <MESSAGE value="RSA encryption padding test passed" />
     <MESSAGE value="RSA is done, can handle any message with bits length more than 21." />
-    <option name="LAST_COMMIT_MESSAGE" value="RSA is done, can handle any message with bits length more than 21." />
+    <MESSAGE value="README add instructions" />
+    <option name="LAST_COMMIT_MESSAGE" value="README add instructions" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/test_utilpy.py" />
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testData/plain1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -604,13 +595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testData/privKey1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="2" column="307" selection-start-line="2" selection-start-column="307" selection-end-line="2" selection-end-column="307" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_RSA_encryption.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -622,6 +606,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="83" column="44" lean-forward="true" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -689,10 +676,27 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="434">
-            <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <first_editor relative-caret-position="496">
+            <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/students.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testData/privKey1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="4" lean-forward="true" selection-start-column="4" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
         </state>
       </provider>
     </entry>
