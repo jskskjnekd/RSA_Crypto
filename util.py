@@ -1,5 +1,6 @@
 import os
 import random
+import math
 
 """
 :: 11/12/18   12:26 PM
@@ -160,7 +161,7 @@ def generatePrime(numBits):
     if (numBits == 1):
         return 2
     elif (numBits == 2):
-        return random.choice([2,3])
+        return random.choice([2, 3])
     elif (numBits == 3):
         return random.choice([2, 3, 7])
     elif (numBits == 4):
@@ -170,11 +171,14 @@ def generatePrime(numBits):
     elif (numBits == 6):
         return random.choice([2, 3, 7, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61])
     elif (numBits == 7):
-        return random.choice([2, 3, 7, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127])
+        return random.choice(
+            [2, 3, 7, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101,
+             103, 107, 109, 113, 127])
     elif (numBits == 8):
         return random.choice(
             [2, 3, 7, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101,
-             103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251])
+             103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211,
+             223, 227, 229, 233, 239, 241, 251])
     # numBits > 8
     while (i < 1000):
         primeVal = byteToint(os.urandom(int(numBits / 8)))
@@ -208,11 +212,12 @@ def byteToint(byteArray):
 def hexToInt(hexStr):
     return int(hexStr, 16)
 
+
 """
 :: 11/15/18   11:03 AM
 :: Padding
     @input
-        len_n : the final length of padded message in bits
+        n : the final length of padded message in bits
         unpadded_message: uppadded message in bytes
     @output
         padded_message
@@ -223,58 +228,40 @@ def hexToInt(hexStr):
     len(padded_message) = n   (in bits)  
 """
 
-def padding(len_n, unpadded_message):
-    try:
-        assert (len(unpadded_message) <= int((int(len_n/2) - 24)/8))
-    except Exception as e:
-        print(e)
-        print("The length of unpadded message MUST be no more than int(len_n/2) - 3)")
 
-    m = bytes(int((int(len_n/2) - 3)/8))
-    print(int((int(len_n/2) - 3)/8))
-    print(len(unpadded_message))
-    print(len(m))
-    print(m)
-    print(unpadded_message)
-    m[len(m)-len(unpadded_message):] = unpadded_message
-    print(m)
-    pass
-    # print("unpadded message : ", unpadded_message)
-    # print("unpadded message len : ", len(unpadded_message))
-    # len_r = len(unpadded_message) + 3
-    # r = os.urandom(len_r)
-    # # print(type(r))
-    # # print(type(unpadded_message))
-    # padded_message = b'\x00' + b'\x02' + r + b'\x00' + unpadded_message
-    # print(padded_message)
-    # print(len(padded_message))
-    # print(padded_message[int(len(padded_message)/2)])
-    # print((padded_message[2+int(len(padded_message)/2)]).to_bytes(1, 'big'))
+def padding(n, unpadded_message):
+    print("\n" * 2)
+    len_m_inBits_limit = int(n // 2) - 24
+    len_r_inBits = n - len(unpadded_message) * 8 - 24
+    print("len r in bits ", len_r_inBits)
+
+    if len(unpadded_message) * 8 > len_m_inBits_limit:
+        print("total n bits:\t", n)
+        print("unpadded message length in bytes:\t", 8*len(unpadded_message))
+        print("unpadded message length limit in bytes:\t", len_m_inBits_limit)
+        raise ValueError('message size is too big')
+    else:
+        r = generate_r(len_r_inBits)
+        result = b'\x00\x02' + r + b"\x00" + unpadded_message
+        print("padded message length in bits ", 8*len(result))
+        return result
 
 
+def generate_r(len_r_inBits):
+    len_r_inBytes = math.floor(len_r_inBits // 8)
+    r_current_length_inBytes = 0
+    r = b""
+    while (r_current_length_inBytes != len_r_inBytes):
+        randomByte = os.urandom(1)
+        if randomByte != b"\x00":
+            r += randomByte
+            r_current_length_inBytes += 1
+    return r
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+def unpadding(paddedMessage):
+    for i in range(1, len(paddedMessage)):
+        if paddedMessage[i] == 0:
+            break
+    result = paddedMessage[i + 1:]
+    return result

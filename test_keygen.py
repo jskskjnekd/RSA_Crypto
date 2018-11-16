@@ -32,4 +32,27 @@ class TestKeyGen(TestCase):
             os.system(dec_command)
 
             
-            
+    def test_keygen(self):
+        for i in range(1):
+            nBits = 1024
+            publicKeyFileName = "testData/keygenTest_pub_" + str(i)
+            privateKeyFileName = "testData/keygenTest_priv_" + str(i)
+            keygen_command = "python3 rsa-keygen.py " + \
+                                " -p " + publicKeyFileName + \
+                                " -s " + privateKeyFileName + \
+                                " -n " + str(nBits)
+            os.system(keygen_command)
+            with open(publicKeyFileName, 'r') as publicKeyFile:
+                nBits1 = int(publicKeyFile.readline())
+                N1 = int(publicKeyFile.readline())
+                e = int(publicKeyFile.readline())
+            self.assertEqual(N1.bit_length(), nBits1)
+            with open(privateKeyFileName, 'r') as privateKeyFile:
+                nBits2 = int(privateKeyFile.readline())
+                N2 = int(privateKeyFile.readline())
+                d = int(privateKeyFile.readline())
+            self.assertEqual(N2.bit_length(), nBits2)
+            self.assertEqual(N1, N2)
+
+
+

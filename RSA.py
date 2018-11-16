@@ -6,25 +6,23 @@ import os
 :: RSA Encryption
 """
 
+
 class RSACipher:
     def __init__(self):
         pass
-    #expects m to be bytes, N to be integer
-    def pad(m,N):
-        n = int(N // 2)
-        if len(m) > len(n):
-            raise ValueError('message size exceed n bits')
-        else:
-            r_len = int(n//2) - 24
-            pad = b"\0x00\x00"+str(os.urandom(r_len))+b"\x00"
-            padded_m = pad + m
-            print("THIS VALUE SHOULD ALWAYS BE THE SIZE OF n :"+str(len(padded_m)))
-            return padded_m
 
+    def pad(n, unpadded_message):
+        """
+        :param unpadded_message:
+        :return: padded message
+        """
+        return util.padding(n, unpadded_message)
 
-
-
-
+    def unpad(paddedMessage):
+        """
+        :return: original message
+        """
+        return util.unpadding(paddedMessage)
 
     def Encryption(N, e, m):
         """
@@ -34,7 +32,7 @@ class RSACipher:
         :return:
             m**e mod N
         """
-        return util.quickExpMod(m,e,N)
+        return util.quickExpMod(m, e, N)
 
     def Decryption(N, d, c):
         """
@@ -45,33 +43,3 @@ class RSACipher:
             c**d mod N
         """
         return util.quickExpMod(c, d, N)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
