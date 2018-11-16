@@ -27,7 +27,7 @@ def main(k, i, o):
     message = util.byteToint(messageByte)
 
     # ------------------------Padding the message---------------------------------------
-    paddedMessageByte = RSA.RSACipher.pad(keyStringNumBits, messageByte)
+    paddedMessageByte = RSA.RSACipher.pad(int(keyStringNumBits//2), messageByte)
     paddedMessageInt = util.byteToint(paddedMessageByte)
     assert (paddedMessageInt < N)
 
@@ -38,6 +38,7 @@ def main(k, i, o):
     print("plainInt ->\n", message)
     print("plain bytes ->\n", messageByte)
     print("padded plain Int ->\n", paddedMessageInt)
+    print("padded plain byte ->\n", paddedMessageByte)
     print("cipherInt ->\n", cipherInt)
     print("cipherByte =>\n", cipherByte)
     with open(o, 'wb') as outputFile:

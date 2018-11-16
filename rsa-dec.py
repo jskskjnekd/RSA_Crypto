@@ -35,17 +35,13 @@ def main(k, i, o):
     print("\nPlain int is:\n", plain, "\n\n")
 
     plainByte = plain.to_bytes(int(plain.bit_length() // 8)+1, byteorder='big')
+    print("plain bytes:\t", plainByte)
     unpaddedPlainBytes = RSA.RSACipher.unpad(plainByte)
     unpaddedPlainInt = util.byteToint(unpaddedPlainBytes)
     print("unpadded plain int:\t", unpaddedPlainInt)
     print("unpadded plain bytes:\t", unpaddedPlainBytes)
-    # # if (plain.bit_length() % 8 == 0):
-    # #     plainByte = plain.to_bytes((plain.bit_length() // 8), byteorder='big')
-    # # else:
-    # #     plainByte = plain.to_bytes((plain.bit_length() // 8)+1, byteorder='big')
-    # print("Plain Bytes : \n",plainByte)
-    # with open(o, 'wb') as outputFile:
-    #     outputFile.write(plainByte)
+    with open(o, 'wb') as outputFile:
+        outputFile.write(unpaddedPlainBytes)
 
 
 if __name__ == '__main__':
