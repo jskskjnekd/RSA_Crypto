@@ -25,8 +25,6 @@ def main(k, i, o):
     with open(i, 'rb') as inputFile:
         messageByte = inputFile.read()
     message = util.byteToint(messageByte)
-    print("Plain text is:\n", message, "\n")
-    print("Plain text byte is:\n", messageByte, "\n")
 
     # ------------------------Padding the message---------------------------------------
     paddedMessageByte = RSA.RSACipher.pad(keyStringNumBits, messageByte)
@@ -37,6 +35,9 @@ def main(k, i, o):
     # ------------------------Encryption---------------------------------------
     cipherInt = RSA.RSACipher.Encryption(N, e, paddedMessageInt)
     cipherByte = cipherInt.to_bytes((cipherInt.bit_length() // 8) + 1, byteorder='big')
+    print("plainInt ->\n", message)
+    print("plain bytes ->\n", messageByte)
+    print("padded plain Int ->\n", paddedMessageInt)
     print("cipherInt ->\n", cipherInt)
     print("cipherByte =>\n", cipherByte)
     with open(o, 'wb') as outputFile:
