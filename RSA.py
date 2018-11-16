@@ -11,32 +11,18 @@ class RSACipher:
     def __init__(self):
         pass
 
-    """
-    :: 11/15/18   11:03 AM
-    :: Padding
-        @input
-            N : the final length of padded message in bits
-            m : unpadded message in bytes
-        @output
-            padded_message
-    ::
-        (0x00 || 0x02 || r || 0x00 || m)
-        where r is a random bytes array;
-    ::
-        len(padded_message) = n   (in bits)  
-    """
+    def pad(n, unpadded_message):
+        """
+        :param unpadded_message:
+        :return: padded message
+        """
+        return util.padding(n, unpadded_message)
 
-    def pad(m, N):
-        pass
-        # n = int(N // 2)
-        # if len(m) > len(n):
-        #     raise ValueError('message size exceed n bits')
-        # else:
-        #     r_len = int(n // 2) - 24
-        #     pad = b"\0x00\x00" + str(os.urandom(r_len)) + b"\x00"
-        #     padded_m = pad + m
-        #     print("THIS VALUE SHOULD ALWAYS BE THE SIZE OF n :" + str(len(padded_m)))
-        #     return padded_m
+    def unpad(paddedMessage):
+        """
+        :return: original message
+        """
+        return util.unpadding(paddedMessage)
 
     def Encryption(N, e, m):
         """
