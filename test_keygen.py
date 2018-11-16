@@ -53,7 +53,6 @@ class TestKeyGen(TestCase):
                 d = int(privateKeyFile.readline())
             self.assertEqual(N2.bit_length(), nBits2)
             self.assertEqual(N1, N2)
-            self.assertEqual(N1, d * e)
 
 
 
